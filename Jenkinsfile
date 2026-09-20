@@ -1,13 +1,11 @@
 pipeline {
     agent any
 
-    stages {
+    tools {
+        maven 'Maven-3.9.16'
+    }
 
-        stage('Checkout') {
-            steps {
-                echo 'Source code checked out from GitHub'
-            }
-        }
+    stages {
 
         stage('Build') {
             steps {
