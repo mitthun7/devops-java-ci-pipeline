@@ -19,6 +19,14 @@ pipeline {
             }
         }
 
+        stage('SonarQube Analysis') {
+            steps {
+                withSonarQubeEnv('SonarQube') {
+                    bat 'mvn sonar:sonar -Dsonar.projectKey=devops-java-ci'
+                }
+            }
+        }
+
         stage('Package') {
             steps {
                 bat 'mvn package -DskipTests'
